@@ -1,0 +1,98 @@
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+rect {
+  fill: transparent;
+  shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  shape-rendering: crispEdges;
+}
+
+.axisLine {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 2px;
+}
+
+/* .dot {
+  fill-opacity: .25;
+} */
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: .2rem;
+  background: #313639;
+  color: #f9f9f9;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+  font-size: .7rem;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+  border-radius: 2px;
+}
+
+
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+#container {
+  position: relative;
+  float: left;
+  width: 25%;
+  height: 100%;
+}
+#figure {
+  padding: 5%;
+  position: absolute;
+  bottom: 0;
+}
+
+#figcaption {
+  color: white;
+}
+
+#titleDiv{
+  padding: 55;
+}
+
+#yearHeader {
+  color: #FFFFFF;
+  font-family: Arial;
+}
+
+#button {
+  width: 100%;
+}
