@@ -1,6 +1,7 @@
 
 
-import isos from './iso_links.json' assert { type: "json" };
+import isos from './snippet_links.json' assert { type: "json" };
+import specs from './spectral_links.json' assert { type: "json" };
 
 
 function windowRespond() {
@@ -47,10 +48,11 @@ function windowRespond() {
       
     }
 
-    function changeText(text) {
+    function changeText(text, file) {
       let cap = document.getElementById("figcaption")
-      console.log(cap.firstChild.data)
       cap.firstChild.data = text;
+      let fig = document.getElementById("figure")
+      fig.src = file;
       
     }
 
@@ -169,10 +171,13 @@ function windowRespond() {
         .attr("fill-opacity", .25)
         .style("fill", 'white')
         .on('mouseover', function (d, i) {
-          let artist = d.artist.replace(/ /g, "_").replace("", "")
-          let title = d.title.replace(/ /g, "_").replace("", "")
-          let song = `${title}_(${artist})`
+          let artist = d.artist.replace(/ /g, "_").replace("", "").replace('.', '')
+          let title = d.title.replace(/ /g, "_").replace("", "").replace('.', '')
+          let song = `${title}_-_${artist}_preview.wav`.replace('(').replace(')')
+          let spec_image = `${title}_-_${artist}_preview.png`.replace('(').replace(')')
           let link = isos[song]
+          
+          let spec_link = specs[spec_image]
           console.log(song)
           console.log(link)
           d3.select(this).transition()
@@ -184,7 +189,7 @@ function windowRespond() {
           div.html("Song: " + d.title + "<br>" + "Artist: " + d.artist + "<br>" + "Date: " + new Date(d.date).toLocaleString().split(',')[0] + "<br>" + "Total Variation: " + Math.round(d.TV * 1000) / 1000)
             .style("left", (d3.event.pageX + 10) + "px")
             .style("top", (d3.event.pageY - 15) + "px");
-          changeText(`${d.title}, ${d.artist}`)
+          changeText(`${d.title}, ${d.artist}`, spec_link)
           playMusic(1, link)
           // playMusic(1, d.artist+'.mp3')
 
