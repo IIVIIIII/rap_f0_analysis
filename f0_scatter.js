@@ -35,7 +35,6 @@ function windowRespond() {
 
   let audio = document.getElementById("sumaudio");
     function playMusic(playStatus, file) {
-      // audio.load('TT_(Twice).mp3')
       if (playStatus == '1') {
         audio.src = file;
         audio.load()
@@ -51,7 +50,7 @@ function windowRespond() {
     function changeText(text, file) {
       let cap = document.getElementById("figcaption")
       cap.firstChild.data = text;
-      let fig = document.getElementById("figure")
+      let fig = document.getElementById("spectrogram")
       fig.src = file;
       
     }
@@ -179,7 +178,7 @@ function windowRespond() {
           
           let spec_link = specs[spec_image]
           console.log(song)
-          console.log(link)
+          console.log(spec_link)
           d3.select(this).transition()
             .duration('100')
             .attr("fill-opacity", 1);
