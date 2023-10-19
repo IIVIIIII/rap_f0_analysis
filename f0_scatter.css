@@ -71,11 +71,11 @@ div.tooltip {
 #container {
   position: relative;
   float: left;
-  width: 25%;
+  width: 560px;
   height: 100%;
 }
 #figure {
-  padding: 5%;
+  padding: 0 2% 0 5%;
   position: absolute;
   bottom: 0;
 }
@@ -90,7 +90,7 @@ div.tooltip {
 
 #yearHeader {
   color: #FFFFFF;
-  font-family: Arial;
+  font-family: Railway;
 }
 
 #button {

@@ -6,6 +6,7 @@ import specs from './spectral_links.json' assert { type: "json" };
 
 function windowRespond() {
 
+  console.log(window.innerWidth)
 
   var svgArea = d3.select("body").selectAll("svg");
 
@@ -14,7 +15,7 @@ function windowRespond() {
   }
 
   var margin = { top: 50, right: 50, bottom: 50, left: 50 },
-      outerWidth = window.innerWidth*0.75,
+      outerWidth = window.innerWidth-560,
       outerHeight = window.innerHeight,
       width = outerWidth - margin.left - margin.right,
       height = outerHeight - margin.top - margin.bottom;
@@ -117,11 +118,11 @@ function windowRespond() {
         .attr("fill", "white")
       .append("text")
         .classed("label", true)
-        .attr("x", width)
+        .attr("x", width/2)
         .attr("y", margin.bottom - 10)
-        .style("text-anchor", "end")
-        .text(xCat)
-        .attr("fill", "white");
+        .style("text-anchor", "center")
+        .text("Release Date")
+        .attr("fill", "#666666");
 
     svg.append("g")
         .classed("y axis", true)
@@ -131,10 +132,11 @@ function windowRespond() {
         .classed("label", true)
         .attr("transform", "rotate(-90)")
         .attr("y", -margin.left)
+        .attr("x", -height/2 - margin.top)
         .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text(yCat)
-        .attr("fill", "white");
+        .style("text-anchor", "center")
+        .text('Total Variation (Cents)')
+        .attr("fill", "#666666");
 
     var objects = svg.append("svg")
         .classed("objects", true)
@@ -170,15 +172,15 @@ function windowRespond() {
         .attr("fill-opacity", .25)
         .style("fill", 'white')
         .on('mouseover', function (d, i) {
-          let artist = d.artist.replace(/ /g, "_").replace("", "").replace('.', '')
-          let title = d.title.replace(/ /g, "_").replace("", "").replace('.', '')
-          let song = `${title}_-_${artist}_preview.wav`.replace('(').replace(')')
-          let spec_image = `${title}_-_${artist}_preview.png`.replace('(').replace(')')
+          let title = d.title
+          let artist = d.artist
+          let song = `${title} - ${artist}`
+          // let spec_image = `${title}_-_${artist}_preview.png`.replace('(').replace(')')
           let link = isos[song]
           
-          let spec_link = specs[spec_image]
+          let spec_link = specs[song]
           console.log(song)
-          console.log(spec_link)
+          console.log(link)
           d3.select(this).transition()
             .duration('100')
             .attr("fill-opacity", 1);
