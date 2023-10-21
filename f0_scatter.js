@@ -6,7 +6,6 @@ import specs from './spectral_links.json' assert { type: "json" };
 
 function windowRespond() {
 
-  console.log(window.innerWidth)
 
   var svgArea = d3.select("body").selectAll("svg");
 
@@ -29,10 +28,12 @@ function windowRespond() {
   var xCat = "date",
       yCat = "TV";
 
-  // var data = []
-  // d3.csv("f0_songs.csv", (d) => {
-  //   data.push(d)
-  // })
+  // console.log(Data)
+
+
+
+
+
 
   let audio = document.getElementById("sumaudio");
     function playMusic(playStatus, file) {
@@ -62,10 +63,12 @@ function windowRespond() {
 
   
   d3.csv("f0_songs.csv", function(data) {
+
     data.forEach(function(d) {
       d.date = new Date(d.date);
       d.TV = +d.TV;
     });
+
 
     var xMax = d3.max(data, function(d) { return d[xCat]; }) * 1.01,
         xMin = d3.min(data, function(d) { return d[xCat]; }) * 0.99,
@@ -209,6 +212,14 @@ function windowRespond() {
         // .on("mouseout", tip.hide);
 
     d3.select("input").on("click", change);
+
+
+
+
+
+    // We get back an object with m (slope) and b (y intercept). Inspect the object above if you're not sure.
+    var linearRegression = ss.linearRegression(data.xCat, data.yCat)
+    console.log(linearRegression)
 
 
 
