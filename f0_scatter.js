@@ -3,6 +3,12 @@
 import isos from './snippet_links.json' assert { type: "json" };
 import specs from './spectral_links.json' assert { type: "json" };
 
+let quarterScreenWidth = window.screen.width * 0.25
+
+let begun = false
+
+document.getElementById("leftContainer").style.width = `${quarterScreenWidth}px`
+
 
 function windowRespond() {
 
@@ -14,12 +20,12 @@ function windowRespond() {
   }
 
   var margin = { top: 50, right: 50, bottom: 50, left: 50 },
-    outerWidth = window.innerWidth - 500,
+    outerWidth = window.innerWidth - quarterScreenWidth,
     outerHeight = window.innerHeight,
     width = outerWidth - margin.left - margin.right,
     height = outerHeight - margin.top - margin.bottom;
 
-  console.log(window.innerWidth)
+  console.log(window.screen.width)
 
   var x = d3.time.scale()
     .range([0, width]).nice();
@@ -257,31 +263,25 @@ function windowRespond() {
       .attr("stroke-width", 2)
 
 
-    objects.append("svg:rect")
-      .classed("welcomeRect", true)
-      .attr("width", width)
-      .attr("height", height)
-        // var welcomeDiv = d3.select("#scatter").append("div")
-    //   .attr("class", "welcome")
-    //   .style("opacity", 0.5)
-    //   .style("width", width)
-    //   .style("height", height)
-    //   .style("top", 100)
-      .style("fill", 'black')
-      .style('stroke', 'white')
-      .style("opacity", 0.8)
-      .on('mouseover', function (d, i) {
-        d3.select(this).transition()
-          .duration('100')
-          .style("fill", "#333333");
-
-      })
-      .on('mouseout', function (d, i) {
-        d3.select(this).transition()
-          .duration('200')
-          .style("fill", 'black');
-      })
-      .on('click', begin);
+    if (begun == false) {
+      objects.append("svg:rect")
+        .classed("welcomeRect", true)
+        .attr("width", width)
+        .attr("height", height)
+        .style("fill", 'black')
+        .style('stroke', 'white')
+        .style("opacity", 0.8)
+        .on('mouseover', function (d, i) {
+          d3.select(this).transition()
+            .duration('100')
+            .style("fill", "#333333");
+        })
+        .on('mouseout', function (d, i) {
+          d3.select(this).transition()
+            .duration('200')
+            .style("fill", 'black');
+        })
+        .on('click', begin);
 
 
 
@@ -289,35 +289,38 @@ function windowRespond() {
 
 
       objects.append("svg:text")
-      .classed("welcomeText", true)
-      .text('Explore the data by zooming and dragging the scatter plot.')
-      .attr("x", width / 2)
-      .attr("y", height/2 - 22)
-      .style("text-anchor", "middle")
-      .style("fill", 'white')
-      .style("opacity", 1)
-      .on('click', begin);
+        .classed("welcomeText", true)
+        .text('Explore the data by zooming and dragging the scatter plot.')
+        .attr("x", width / 2)
+        .attr("y", height / 2 - 22)
+        .style("text-anchor", "middle")
+        .style("fill", 'white')
+        .style("opacity", 1)
+        .on('click', begin);
       objects.append("svg:text")
-      .classed("welcomeText", true)
-      .text('Hover over datapoints to hear a snippet of their vocal audio.')
-      .attr("x", width / 2)
-      .attr("y", height/2 - 0)
-      .style("text-anchor", "middle")
-      .style("fill", 'white')
-      .style("opacity", 1)
-      .on('click', begin);
+        .classed("welcomeText", true)
+        .text('Hover over datapoints to hear a snippet of their vocal audio.')
+        .attr("x", width / 2)
+        .attr("y", height / 2 - 0)
+        .style("text-anchor", "middle")
+        .style("fill", 'white')
+        .style("opacity", 1)
+        .on('click', begin);
       objects.append("svg:text")
-      .classed("welcomeText", true)
-      .text('CLICK TO BEGIN')
-      .attr("x", width / 2)
-      .attr("y", height/2 + 30)
-      .style("text-anchor", "middle")
-      .style("fill", 'white')
-      .style("opacity", 1)
-      .on('click', begin);
+        .classed("welcomeText", true)
+        .text('CLICK TO BEGIN')
+        .attr("x", width / 2)
+        .attr("y", height / 2 + 30)
+        .style("text-anchor", "middle")
+        .style("fill", 'white')
+        .style("opacity", 1)
+        .on('click', begin);
+
+    }
 
 
-      
+
+
 
 
 
@@ -349,10 +352,10 @@ function windowRespond() {
         .attr("transform", transform);
 
       svg.selectAll(".regressionLine")
-      .attr("x1", x(new Date(regressionPoints[0].x)))
-      .attr("y1", y(regressionPoints[0].y))
-      .attr("x2", x(new Date(regressionPoints[1].x)))
-      .attr("y2", y(regressionPoints[1].y))
+        .attr("x1", x(new Date(regressionPoints[0].x)))
+        .attr("y1", y(regressionPoints[0].y))
+        .attr("x2", x(new Date(regressionPoints[1].x)))
+        .attr("y2", y(regressionPoints[1].y))
 
     }
 
@@ -365,6 +368,7 @@ function windowRespond() {
     function begin() {
       d3.select("body").selectAll(".welcomeText").remove()
       d3.select("body").selectAll(".welcomeRect").remove()
+      begun = true
     }
 
 
