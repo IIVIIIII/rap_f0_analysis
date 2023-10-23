@@ -68,16 +68,42 @@ div.tooltip {
   left: 0;
 }
 
-#container {
+
+
+
+
+
+#leftContainer {
   position: relative;
   float: left;
-  width: 560px;
+  width: 500px;
   height: 100%;
+  
 }
+
+#rightContainer {
+  height: 100%; 
+  width: calc(100% - 500px); 
+  float: left;
+}
+
+#welcomeDiv {
+  background-color: white;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  /* height: calc(100% - 50); 
+  width: calc(100% - 50);  */
+  /* top: 50;
+  left: 50; */
+}
+
 #figure {
-  padding: 0 2% 0 5%;
+  padding: 0 0 50 25;
   position: absolute;
   bottom: 0;
+  margin: 0
 }
 
 #figcaption {
@@ -85,7 +111,16 @@ div.tooltip {
 }
 
 #titleDiv{
-  padding: 55;
+  padding: 50;
+}
+
+#buttonsDiv{
+  padding: 0 50 0 50;
+}
+
+#spectrogram{
+  padding: 0;
+  margin: 0;
 }
 
 #yearHeader {

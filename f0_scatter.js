@@ -14,10 +14,12 @@ function windowRespond() {
   }
 
   var margin = { top: 50, right: 50, bottom: 50, left: 50 },
-    outerWidth = window.innerWidth - 560,
+    outerWidth = window.innerWidth - 500,
     outerHeight = window.innerHeight,
     width = outerWidth - margin.left - margin.right,
     height = outerHeight - margin.top - margin.bottom;
+
+  console.log(window.innerWidth)
 
   var x = d3.time.scale()
     .range([0, width]).nice();
@@ -96,6 +98,14 @@ function windowRespond() {
     var div = d3.select("body").append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
+
+    // var welcomeDiv = d3.select("#scatter").append("div")
+    //   .attr("class", "welcome")
+    //   .style("opacity", 0.5)
+    //   .style("width", width)
+    //   .style("height", height)
+    //   .style("top", 100)
+    //   .style("background-color", 'white');
 
     var zoomBeh = d3.behavior.zoom()
       .x(x)
@@ -247,6 +257,69 @@ function windowRespond() {
       .attr("stroke-width", 2)
 
 
+    objects.append("svg:rect")
+      .classed("welcomeRect", true)
+      .attr("width", width)
+      .attr("height", height)
+        // var welcomeDiv = d3.select("#scatter").append("div")
+    //   .attr("class", "welcome")
+    //   .style("opacity", 0.5)
+    //   .style("width", width)
+    //   .style("height", height)
+    //   .style("top", 100)
+      .style("fill", 'black')
+      .style('stroke', 'white')
+      .style("opacity", 0.8)
+      .on('mouseover', function (d, i) {
+        d3.select(this).transition()
+          .duration('100')
+          .style("fill", "#333333");
+
+      })
+      .on('mouseout', function (d, i) {
+        d3.select(this).transition()
+          .duration('200')
+          .style("fill", 'black');
+      })
+      .on('click', begin);
+
+
+
+
+
+
+      objects.append("svg:text")
+      .classed("welcomeText", true)
+      .text('Explore the data by zooming and dragging the scatter plot.')
+      .attr("x", width / 2)
+      .attr("y", height/2 - 22)
+      .style("text-anchor", "middle")
+      .style("fill", 'white')
+      .style("opacity", 1)
+      .on('click', begin);
+      objects.append("svg:text")
+      .classed("welcomeText", true)
+      .text('Hover over datapoints to hear a snippet of their vocal audio.')
+      .attr("x", width / 2)
+      .attr("y", height/2 - 0)
+      .style("text-anchor", "middle")
+      .style("fill", 'white')
+      .style("opacity", 1)
+      .on('click', begin);
+      objects.append("svg:text")
+      .classed("welcomeText", true)
+      .text('CLICK TO BEGIN')
+      .attr("x", width / 2)
+      .attr("y", height/2 + 30)
+      .style("text-anchor", "middle")
+      .style("fill", 'white')
+      .style("opacity", 1)
+      .on('click', begin);
+
+
+      
+
+
 
 
 
@@ -284,11 +357,18 @@ function windowRespond() {
     }
 
     function transform(d) {
-
       // console.log(d)
-
       return "translate(" + x(d[xCat]) + "," + y(d[yCat]) + ")";
     }
+
+
+    function begin() {
+      d3.select("body").selectAll(".welcomeText").remove()
+      d3.select("body").selectAll(".welcomeRect").remove()
+    }
+
+
+
   });
 }
 
