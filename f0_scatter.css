@@ -76,14 +76,14 @@ div.tooltip {
 #leftContainer {
   position: relative;
   float: left;
-  width: 500px;
+  /* width: 500px; */
   height: 100%;
   
 }
 
 #rightContainer {
   height: 100%; 
-  width: calc(100% - 500px); 
+  width: 20%; 
   float: left;
 }
 
@@ -100,7 +100,7 @@ div.tooltip {
 }
 
 #titleDiv{
-  padding: 55;
+  padding: 55 50 0 50;
   /* height: calc(100% / 3); */
 }
 

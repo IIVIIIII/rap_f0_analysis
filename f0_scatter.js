@@ -8,7 +8,7 @@ let quarterScreenWidth = window.screen.width * 0.25
 let begun = false
 
 document.getElementById("leftContainer").style.width = `${quarterScreenWidth}px`
-document.getElementById("rightContainer").style.width = `${window.innerWidth - quarterScreenWidth}px`
+// document.getElementById("rightContainer").style.width = `${window.innerWidth - quarterScreenWidth}px`
 
 
 function windowRespond() {
