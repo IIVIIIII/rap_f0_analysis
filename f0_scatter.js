@@ -8,7 +8,7 @@ let quarterScreenWidth = window.screen.width * 0.25
 let begun = false
 
 document.getElementById("leftContainer").style.width = `${quarterScreenWidth}px`
-document.getElementById("rightContainer").style.width = `${window.screen.width - quarterScreenWidth}px`
+document.getElementById("rightContainer").style.width = `${window.innerWidth - quarterScreenWidth}px`
 
 
 function windowRespond() {
@@ -20,7 +20,7 @@ function windowRespond() {
     svgArea.remove();
   }
 
-  var margin = { top: 50, right: 50, bottom: 80, left: 50 },
+  var margin = { top: 50, right: 50, bottom: 75, left: 50 },
     outerWidth = window.innerWidth - quarterScreenWidth,
     outerHeight = window.innerHeight,
     width = outerWidth - margin.left - margin.right,
@@ -150,7 +150,7 @@ function windowRespond() {
       .append("text")
       .classed("label", true)
       .attr("x", width / 2)
-      .attr("y", margin.bottom - 40)
+      .attr("y", margin.bottom - 35)
       .style("text-anchor", "middle")
       .text("Release Date")
       .attr("fill", "#666666");
