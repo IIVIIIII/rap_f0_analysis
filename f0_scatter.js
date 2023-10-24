@@ -8,6 +8,7 @@ let quarterScreenWidth = window.screen.width * 0.25
 let begun = false
 
 document.getElementById("leftContainer").style.width = `${quarterScreenWidth}px`
+document.getElementById("rightContainer").style.width = `${window.screen.width - quarterScreenWidth}px`
 
 
 function windowRespond() {
@@ -19,7 +20,7 @@ function windowRespond() {
     svgArea.remove();
   }
 
-  var margin = { top: 50, right: 50, bottom: 50, left: 50 },
+  var margin = { top: 50, right: 50, bottom: 80, left: 50 },
     outerWidth = window.innerWidth - quarterScreenWidth,
     outerHeight = window.innerHeight,
     width = outerWidth - margin.left - margin.right,
@@ -129,7 +130,17 @@ function windowRespond() {
 
     svg.append("rect")
       .attr("width", width)
-      .attr("height", height);
+      .attr("height", height)
+
+    svg.append("text")
+      .classed("title", true)
+      .text('Total F0 Variation Over Time')
+      .attr("x", width / 2)
+      .attr("y", -15)
+      .style("text-anchor", "middle")
+      .style("fill", '#666666')
+      .style("opacity", 1)
+      .on('click', begin);;
 
     svg.append("g")
       .classed("x axis", true)
@@ -139,10 +150,11 @@ function windowRespond() {
       .append("text")
       .classed("label", true)
       .attr("x", width / 2)
-      .attr("y", margin.bottom - 10)
-      .style("text-anchor", "center")
+      .attr("y", margin.bottom - 40)
+      .style("text-anchor", "middle")
       .text("Release Date")
       .attr("fill", "#666666");
+  
 
     svg.append("g")
       .classed("y axis", true)
@@ -155,13 +167,23 @@ function windowRespond() {
       .attr("x", -height / 2 - margin.top)
       .attr("dy", ".71em")
       .style("text-anchor", "center")
-      .text('Total Variation (Cents)')
+      .text('Total F0 Variation (Cents)')
       .attr("fill", "#666666");
 
     var objects = svg.append("svg")
       .classed("objects", true)
       .attr("width", width)
       .attr("height", height);
+
+    // objects.append("text")
+    //   .classed("title", true)
+    //   .text('Total F0 Variation Over Time')
+    //   .attr("x", width / 2)
+    //   .attr("y", 100)
+    //   .style("text-anchor", "middle")
+    //   .style("fill", 'white')
+    //   .style("opacity", 1)
+    //   .on('click', begin);
 
     objects.append("svg:line")
       .classed("axisLine hAxisLine", true)
@@ -282,11 +304,6 @@ function windowRespond() {
             .style("fill", 'black');
         })
         .on('click', begin);
-
-
-
-
-
 
       objects.append("svg:text")
         .classed("welcomeText", true)

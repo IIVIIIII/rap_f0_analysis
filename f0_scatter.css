@@ -87,20 +87,9 @@ div.tooltip {
   float: left;
 }
 
-#welcomeDiv {
-  background-color: white;
-  opacity: 0.5;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  /* height: calc(100% - 50); 
-  width: calc(100% - 50);  */
-  /* top: 50;
-  left: 50; */
-}
-
 #figure {
   padding: 0 0 50 25;
+  height: calc(100% / 3);
   position: absolute;
   bottom: 0;
   margin: 0
@@ -111,11 +100,18 @@ div.tooltip {
 }
 
 #titleDiv{
-  padding: 50;
+  padding: 55;
+  height: calc(100% / 3);
 }
 
 #buttonsDiv{
   padding: 0 50 0 50;
+  /* display: flex;
+  align-items: center; */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
 }
 
 #spectrogram{
