@@ -76,7 +76,7 @@ div.tooltip {
 #leftContainer {
   position: relative;
   float: left;
-  /* width: 500px; */
+  width: 500px;
   height: 100%;
   
 }

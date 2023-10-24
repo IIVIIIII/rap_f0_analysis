@@ -134,7 +134,7 @@ function windowRespond() {
 
     svg.append("text")
       .classed("title", true)
-      .text('Total F0 Variation Over Time')
+      .text('TOTAL F0 VARIATION OVER TIME')
       .attr("x", width / 2)
       .attr("y", -15)
       .style("text-anchor", "middle")
