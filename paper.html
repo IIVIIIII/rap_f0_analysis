@@ -13,37 +13,42 @@
 
 
 
-<div>
+  <div>
 
-  <div id="container">
-    <!-- Other elements here -->
-    <div id="titleDiv">
-      
-      <img src="title.png", class="img-fluid">
-      <br>
-      <br>
-      <h1 ID="yearHeader">(2009-2023)</h1>
-
-    </div>
-
-    <div id="titleDiv">
-      <a href="index.html" id="button" class="btn btn-outline-light btn-lg" role="button">Data</a>
-      <a href="demo.html" id="button" class="btn btn-outline-light btn-lg" role="button">Demo</a>
-    </div>
+    <div id="leftContainer">
+  
+      <!-- Title -->
+      <div id="titleDiv">
+        <img src="title.png", class="img-fluid">
+        <br>
+        <br>
+        <h1 ID="yearHeader">(2009-2023)</h1>
+      </div>
+  
+      <!-- Buttons -->
+      <div id="buttonsDiv">
+        <a href="index.html" id="button1" class="btn btn-outline-light btn-lg" role="button">Data</a>
+        <!-- <button id="button1" class="btn btn-outline-light btn-lg" role="button">Paper</button> -->
+        <a href="demo.html" id="button2" class="btn btn-outline-light btn-lg" role="button">Demo</a>
+        <!-- <button id="button2" class="btn btn-outline-light btn-lg" role="button">Demo</button> -->
+  
+      </div>
     
-
-
-    <figure id="figure" class="figure">
-      <figcaption id="figcaption" class="f6igure-caption text-center">A place holder for now</figcaption>
-      <img id="spectrogram" src="https://drive.google.com/uc?export=view&id=12XwfdKUDNLuf8dQW3Pk9PyPQuA5LzQCU" class="figure-img img-fluid rounded">
-    </figure>
+      <!-- Spectrograms -->
+      <figure id="figure" class="figure">
+        <figcaption id="figcaption" class="f6igure-caption text-center">A place holder for now</figcaption>
+        <img id="spectrogram" src="https://drive.google.com/uc?export=view&id=12XwfdKUDNLuf8dQW3Pk9PyPQuA5LzQCU" class="figure-img img-fluid rounded">
+      </figure>
+    </div>
+  
+    <!-- Plot -->
+    <div id="rightContainer">
+      <embed src="paper.pdf" 
+               width="70%"
+               height="100%"> 
+    </div>
+  
   </div>
-
-  <div class="o2", style="height: 100%; display: flex; float: left; justify-content: center;">
-    <object id="pdf" data="paper.pdf" type="application/pdf" style="width: 100%; height: 100%;"></object>
-  </div>
-
-</div>
 
 
 

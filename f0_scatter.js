@@ -7,8 +7,9 @@ let quarterScreenWidth = window.screen.width * 0.25
 
 let begun = false
 
+
+
 document.getElementById("leftContainer").style.width = `${quarterScreenWidth}px`
-// document.getElementById("rightContainer").style.width = `${window.innerWidth - quarterScreenWidth}px`
 
 
 function windowRespond() {
@@ -347,19 +348,19 @@ function windowRespond() {
 
 
 
-    function change() {
-      xCat = "Carbs";
-      xMax = d3.max(data, function (d) { return d[xCat]; });
-      xMin = d3.min(data, function (d) { return d[xCat]; });
+    // function change() {
+    //   xCat = "Carbs";
+    //   xMax = d3.max(data, function (d) { return d[xCat]; });
+    //   xMin = d3.min(data, function (d) { return d[xCat]; });
 
-      zoomBeh.x(x.domain([xMin, xMax])).y(y.domain([yMin, yMax]));
+    //   zoomBeh.x(x.domain([xMin, xMax])).y(y.domain([yMin, yMax]));
 
-      var svg = d3.select("#scatter").transition();
+    //   var svg = d3.select("#scatter").transition();
 
-      svg.select(".x.axis").duration(750).call(xAxis).select(".label").text(xCat);
+    //   svg.select(".x.axis").duration(750).call(xAxis).select(".label").text(xCat);
 
-      objects.selectAll(".dot").transition().duration(1000).attr("transform", transform);
-    }
+    //   objects.selectAll(".dot").transition().duration(1000).attr("transform", transform);
+    // }
 
     function zoom() {
       svg.select(".x.axis").call(xAxis);
@@ -393,6 +394,22 @@ function windowRespond() {
   });
 }
 
+
 windowRespond();
+
+var lbdPaper = d3.select("rightContainer").append("div")
+.classed('lbdPaper')
+
+lbdPaper
+
+function buttonFunction() {
+  let buttonText = button1.firstChild.data
+  d3.select("body").selectAll("#scatter").remove()
+  console.log(buttonText)
+}
+
+let button1 = document.getElementById("button1")
+
+button1.onclick = buttonFunction;
 
 d3.select(window).on("resize", windowRespond);
