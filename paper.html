@@ -43,10 +43,35 @@
   
     <!-- Plot -->
     <div id="rightContainer">
-      <embed src="paper.pdf" 
-               width="70%"
-               height="100%"> 
+      <!-- <embed id="paper" src="paper.pdf">  -->
+      <iframe id="paper" src="paper.pdf#view=FitH" frameborder="0" style="height: 100%;"></iframe>
+
     </div>
+
+    <script>
+      // var paper = document.getElementById("paper");
+      // var paperHeight = window.innerHeight;
+      // var paperWidth = paperHeight * (595/841);
+      // paper.style.height = paperHeight;
+      // paper.style.width = paperWidth;
+
+      function windowRespond() {
+
+        var rightContainerWidth = window.screen.width * 0.25;
+        rightContainerWidth = window.innerWidth - rightContainerWidth
+        
+        var rightContainer = document.getElementById("rightContainer");
+        rightContainer.style.width = rightContainerWidth;
+
+        console.log('meow')
+
+      }
+
+      windowRespond();
+
+      window.addEventListener('resize', windowRespond);;
+
+    </script>
   
   </div>
 

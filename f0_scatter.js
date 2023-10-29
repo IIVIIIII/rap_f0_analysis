@@ -397,19 +397,4 @@ function windowRespond() {
 
 windowRespond();
 
-var lbdPaper = d3.select("rightContainer").append("div")
-.classed('lbdPaper')
-
-lbdPaper
-
-function buttonFunction() {
-  let buttonText = button1.firstChild.data
-  d3.select("body").selectAll("#scatter").remove()
-  console.log(buttonText)
-}
-
-let button1 = document.getElementById("button1")
-
-button1.onclick = buttonFunction;
-
 d3.select(window).on("resize", windowRespond);
