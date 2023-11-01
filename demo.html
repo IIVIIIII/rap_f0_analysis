@@ -27,9 +27,9 @@
   
       <!-- Buttons -->
       <div id="buttonsDiv">
-        <a href="index.html" id="button1" class="btn btn-outline-light btn-lg" role="button">Data</a>
+        <a href="paper.html" id="button1" class="btn btn-outline-light btn-lg" role="button">Paper</a>
         <!-- <button id="button1" class="btn btn-outline-light btn-lg" role="button">Paper</button> -->
-        <a href="demo.html" id="button2" class="btn btn-outline-light btn-lg" role="button">Demo</a>
+        <a href="index.html" id="button2" class="btn btn-outline-light btn-lg" role="button">Data</a>
         <!-- <button id="button2" class="btn btn-outline-light btn-lg" role="button">Demo</button> -->
   
       </div>
@@ -37,14 +37,40 @@
       <!-- Spectrograms -->
       <figure id="figure" class="figure">
         <figcaption id="figcaption" class="f6igure-caption text-center">A place holder for now</figcaption>
-        <img id="spectrogram" src="https://drive.google.com/uc?export=view&id=12XwfdKUDNLuf8dQW3Pk9PyPQuA5LzQCU" class="figure-img img-fluid rounded">
+        <img id="spectrogram" src="blank-spec-return.png" class="figure-img img-fluid rounded">
       </figure>
     </div>
   
     <!-- Plot -->
     <div id="rightContainer">
-      
+      <!-- <embed id="paper" src="paper.pdf">  -->
+        <h1>Demo under development</h1>
     </div>
+
+    <script>
+      // var paper = document.getElementById("paper");
+      // var paperHeight = window.innerHeight;
+      // var paperWidth = paperHeight * (595/841);
+      // paper.style.height = paperHeight;
+      // paper.style.width = paperWidth;
+
+      function windowRespond() {
+
+        var rightContainerWidth = window.screen.width * 0.25;
+        rightContainerWidth = window.innerWidth - rightContainerWidth
+        
+        var rightContainer = document.getElementById("rightContainer");
+        rightContainer.style.width = rightContainerWidth;
+
+        console.log('meow')
+
+      }
+
+      windowRespond();
+
+      window.addEventListener('resize', windowRespond);;
+
+    </script>
   
   </div>
 
