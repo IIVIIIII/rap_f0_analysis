@@ -88,7 +88,7 @@ div.tooltip {
 }
 
 #figure {
-  padding: 0 38 65 20;
+  padding: 0 38 40 20;
   /* height: calc(100% / 3); */
   position: absolute;
   bottom: 0;
@@ -101,12 +101,12 @@ div.tooltip {
 }
 
 #titleDiv{
-  padding: 60 40 0 40;
+  padding: 40 40 0 40;
   /* height: calc(100% / 3); */
 }
 
 #buttonsDiv{
-  padding: 0 38 0 38;
+  padding: 10 38 0 38;
   /* display: flex;
   align-items: center; */
   position: absolute;

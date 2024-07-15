@@ -63,7 +63,8 @@ function windowRespond() {
     let cap = document.getElementById("figcaption")
     cap.firstChild.data = text;
     let fig = document.getElementById("spectrogram")
-    fig.src = file;
+    // fig.src = file;
+    fig.src = "https://drive.google.com/file/d/1WsiCO607plI6MMkAnZAohfgEQw6DxRCY/preview"
 
   }
 
