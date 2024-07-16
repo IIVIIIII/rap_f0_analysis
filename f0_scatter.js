@@ -1,13 +1,65 @@
 
 
-import isos from './snippet_links.json' assert { type: "json" };
-import specs from './spectral_links.json' assert { type: "json" };
+// import isos from './snippet_links.json' assert { type: "json" };
+// import specs from './spectral_links.json' assert { type: "json" };
 
 let quarterScreenWidth = window.screen.width * 0.25
 
 let begun = false
 
+// function fetchJSONData(file) {
+//   fetch(file)
+//       .then((isos) => {
+//           if (!res.ok) {
+//               throw new Error
+//                   (`HTTP error! Status: ${res.status}`);
+//           }
+//           console.log(res.json())
+//           return res.json();
+          
+//       })
+// let isos = await fetchJSONData('./snippet_links.json');
+// let specs = await fetchJSONData('./spectral_links.json');
 
+let isos = {}
+let specs = {}
+
+async function getIsos() {
+
+  const url = "./snippet_links.json";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    isos = json
+    console.log(isos);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+async function getSpecs() {
+  
+  const url = "./spectral_links.json";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    specs = json
+    console.log(isos);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+getIsos('./snippet_links.json');
+getSpecs();
 
 document.getElementById("leftContainer").style.width = `${quarterScreenWidth}px`
 
