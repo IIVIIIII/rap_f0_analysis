@@ -52,7 +52,7 @@ async function getSpecs() {
 
     const json = await response.json();
     specs = json
-    console.log(isos);
+    console.log(specs);
   } catch (error) {
     console.error(error.message);
   }
@@ -98,6 +98,8 @@ function windowRespond() {
 
 
   let audio = document.getElementById("sumaudio");
+  // let audio = document.getElementById("theiframe");
+
   function playMusic(playStatus, file) {
     if (playStatus == '1') {
       audio.src = file;
@@ -116,7 +118,7 @@ function windowRespond() {
     cap.firstChild.data = text;
     let fig = document.getElementById("spectrogram")
     // fig.src = file;
-    fig.src = "https://drive.google.com/file/d/1WsiCO607plI6MMkAnZAohfgEQw6DxRCY/preview"
+    fig.src = file
 
   }
 
@@ -270,13 +272,16 @@ function windowRespond() {
       .on('mouseover', function (d, i) {
         let title = d.title
         let artist = d.artist
-        let song = `${title} - ${artist}`
+        let song = `${title}_-_${artist}`.replaceAll('.', '').replaceAll(' ', '_').replaceAll('(', '').replaceAll(')', '')
         // let spec_image = `${title}_-_${artist}_preview.png`.replace('(').replace(')')
-        let link = isos[song]
+        // let link = isos[song]
+        let link = `https://github.com/IIVIIIII/ISMIR_2023_SNIPPETS/blob/main/${song}_preview.wav?raw=true`
+        // let link = "https://github.com/IIVIIIII/ISMIR_2023_SNIPPETS/blob/main/Baby_Birkin_-_Gunna_preview.wav?raw=true"
+    
 
-        let spec_link = specs[song]
+        let spec_link = `https://github.com/IIVIIIII/ISMIR_2023_SPECTROGRAMS/blob/main/${song}_preview.png?raw=true`
         console.log(song)
-        console.log(link)
+        console.log(spec_link)
         d3.select(this).transition()
           .duration('100')
           .attr("fill-opacity", 1);
@@ -449,5 +454,15 @@ function windowRespond() {
 
 
 windowRespond();
+
+
+
+// var frames = window.frames;
+// for (var i = 0; i < frames.length; i++) { 
+//   var sounds = frames[i].document.getElementsByTagName('audio');
+//   for(j=0; j<sounds.length; j++){
+//     sounds[j].play();
+//   }
+// }
 
 d3.select(window).on("resize", windowRespond);
