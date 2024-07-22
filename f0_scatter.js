@@ -272,7 +272,7 @@ function windowRespond() {
       .on('mouseover', function (d, i) {
         let title = d.title
         let artist = d.artist
-        let song = `${title}_-_${artist}`.replaceAll('.', '').replaceAll(' ', '_').replaceAll('(', '').replaceAll(')', '').replaceAll(",", "").replace('*', '_')
+        let song = `${title}_-_${artist}`.replaceAll('.', '').replaceAll(' ', '_').replaceAll('(', '').replaceAll(')', '').replaceAll(",", "%2C").replace('*', '_').replace("'","").replace("&","%26") 
         // let spec_image = `${title}_-_${artist}_preview.png`.replace('(').replace(')')
         // let link = isos[song]
         let link = `https://github.com/IIVIIIII/ISMIR_2023_SNIPPETS/blob/main/${song}_preview.wav?raw=true`
